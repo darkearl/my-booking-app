@@ -37,7 +37,6 @@ You need start an iOS simulator or android simulator before running your app, se
   - React-native-router-flux (https://github.com/aksonov/react-native-router-flux)
   - Redux-thunk (https://github.com/gaearon/redux-thunk)
   - Redux-form (http://redux-form.com/6.6.3/docs/api/)
-  
 ## FAQ
 Question: **How to debug app**
 

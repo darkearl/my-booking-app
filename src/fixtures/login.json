@@ -1,0 +1,9 @@
+{
+  "status":400,
+  "statusText":null,
+  "data": {
+    "status": "error",
+    "arcode": "LOGIN_NG_001",
+    "_error": "Email or Password is invalid."
+  }
+}

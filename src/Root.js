@@ -1,15 +1,20 @@
-'use strict';
 import React,{ Component } from 'react';
-import {Text} from 'react-native';
+import configureStore from './store';
+import { Provider } from 'react-redux';
+import './config';
+import App from './App';
 
 export default class Root extends Component {
 
   constructor() {
     super();
-    // console.disableYellowBox=true;
   }
 
   render() {
-    return <Text>ok</Text>
+    return (
+      <Provider store={configureStore()}>
+        <App />
+      </Provider>
+    )
   }
 }
