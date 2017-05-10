@@ -55,6 +55,7 @@ export function loginUserByToken() {
         if(token) {
           return dispatch(getProfile())
             .then(() => dispatch(loginSuccess()))
+            .catch(() => forgetItem(API_TOKEN))
         }else{
           return false
         }
@@ -79,6 +80,7 @@ function getProfile ()  {
         })
       )
       .catch(error => {
+
         dispatch(loginFailure(error));
         throw error;
       });

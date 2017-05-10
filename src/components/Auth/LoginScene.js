@@ -33,7 +33,6 @@ class LoginScene extends Component {
   render() {
     const { handleSubmit,loginReducer,pristine, submitting } = this.props;
     let disableButton = pristine || submitting
-    console.log(this.refs)
     return (
       <View style={styles.section}>
         <Loading visible={loginReducer.isFetching}/>
