@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { focus } from 'redux-form';
 import { Actions } from 'react-native-router-flux';
 import { login } from '../../actions/Auth/login';
 import LoginScene from './../../components/Auth/LoginScene';
-import {Container} from 'native-base';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, Image } from 'react-native';
+import {Images} from '../../assets/themes';
+import styles from './styles';
 
 class Login extends Component {
 
@@ -19,15 +21,21 @@ class Login extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('../../assets/image/Octocat.png')}/>
-        </View>
-          <LoginScene
-            loginReducer={this.props.loginReducer}
-            onSubmit={this.handleOnSubmit}
-          />
+      <View style={styles.mainContainer}>
+          <Image source={Images.background} style={styles.backgroundImage}/>
+          <View style={styles.container}>
+            <View style={styles.logoContainer}>
+              <Image style={styles.logo} source={Images.logo}/>
+            </View>
+              <LoginScene
+                loginReducer={this.props.loginReducer}
+                onSubmit={this.handleOnSubmit}
+                focusField={this.props.focusField}
+              />
+
+          </View>
       </View>
+
     );
   }
 }
@@ -38,20 +46,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Login);
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: '#3498db'
-  },
-  logoContainer: {
-    alignItems: 'center',
-    flexGrow:1,
-    justifyContent: 'center'
-  },
-  logo: {
-    width:100,
-    height:100
+function mapDispatchToProps(dispatch){
+  return{
+    focusField : (form,field) => dispatch(focus(form,field))
   }
-})
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

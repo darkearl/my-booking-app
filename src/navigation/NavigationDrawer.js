@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Drawer} from 'native-base';
-import SideMenu from '../components/SideMenu';
+import DrawerContent from '../components/DrawerContent';
 import {Actions, DefaultRenderer} from 'react-native-router-flux';
 
 export default class NavigationDrawer extends Component {
@@ -14,7 +14,7 @@ export default class NavigationDrawer extends Component {
         onOpen={()=>Actions.refresh({key:state.key, open: true})}
         onClose={()=>Actions.refresh({key:state.key, open: false})}
         type="displace"
-        content={<SideMenu />}
+        content={<DrawerContent />}
         tapToClose={true}
         openDrawerOffset={0.2}
         panCloseMask={0.2}

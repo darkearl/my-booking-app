@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet,View,Text,TouchableHighlight,Image } from 'react
 import { Actions } from "react-native-router-flux";
 import { connect } from 'react-redux';
 
-class SideMenu extends Component {
+class DrawerContent extends Component {
 
   componentWillMount() {
     const { dispatch } =this.props;
@@ -22,7 +22,7 @@ class SideMenu extends Component {
   }
 }
 
-SideMenu.contextTypes = {
+DrawerContent.contextTypes = {
   drawer: React.PropTypes.object
 };
 
@@ -79,4 +79,4 @@ function mapStateToProps(state,ownProps) {
   }
 }
 
-export default connect(mapStateToProps)(SideMenu)
+export default connect(mapStateToProps)(DrawerContent)

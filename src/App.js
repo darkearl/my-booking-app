@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet,StatusBar } from 'react-native';
-import { Router } from 'react-native-router-flux'
-import { Container } from 'native-base';
+import { View,StatusBar } from 'react-native';
 import { loginUserByToken } from './actions/Auth/login';
 import { connect } from 'react-redux';
-import { scenes } from './scenes';
-
-const RouterWithRedux = connect()(Router);
+import NavigationRouter from './navigation/NavigationRouter';
 
 class App extends Component {
 
@@ -16,15 +12,15 @@ class App extends Component {
 
   componentDidMount() {
     const {dispatch} = this.props;
-    dispatch(loginUserByToken());
+    // dispatch(loginUserByToken());
   }
 
   render() {
     return (
-      <Container>
+      <View style={{flex:1}}>
         <StatusBar barStyle="light-content"/>
-        <RouterWithRedux scenes={scenes} />
-      </Container>
+        <NavigationRouter />
+      </View>
     );
   }
 
