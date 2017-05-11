@@ -1,31 +1,33 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import reducers from "../reducers";
 import {createLogger} from 'redux-logger';
-import rootReducer from '../reducers';
 
-export default function configureStore(initialState) {
+// add the middlewares
+let middlewares = [];
 
-  const logger = createLogger({
-    collapsed:true,
-    duration:true
-  });
+// add thunk middleware
+middlewares.push(thunkMiddleware);
 
-  let createStoreWithMiddleware;
+// add logger middleware
+const logger = createLogger({
+  collapsed:true,
+  duration:true
+});
+middlewares.push(logger);
 
-  const middleware = applyMiddleware(thunkMiddleware, logger);
-  createStoreWithMiddleware = compose(
-    middleware
-  );
+// apply the middleware
+let middleware = applyMiddleware(...middlewares);
 
-  const store = createStoreWithMiddleware(createStore)(rootReducer, initialState);
+// create the store
+const store = createStore(reducers, middleware);
 
-
-  if (module.hot) {
-    module.hot.accept(() => {
-      const nextRootReducer = require('../reducers').default;
-      store.replaceReducer(nextRootReducer)
-    })
-  }
-
-  return store;
+if (module.hot) {
+  module.hot.accept(() => {
+    const nextRootReducer = require('../reducers').default;
+    store.replaceReducer(nextRootReducer)
+  })
 }
+
+// export
+export { store };

@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import configureStore from './store';
+import {store} from './store';
 import { Provider } from 'react-redux';
 import './config';
 import App from './App';
@@ -12,7 +12,7 @@ export default class Root extends Component {
 
   render() {
     return (
-      <Provider store={configureStore()}>
+      <Provider store={store}>
         <App />
       </Provider>
     )

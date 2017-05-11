@@ -1,4 +1,4 @@
 export default {
   useFixtures: true,
-  yellowBox: __DEV__
+  yellowBox: false
 }
