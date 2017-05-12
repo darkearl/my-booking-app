@@ -65,7 +65,8 @@ Question: **How to rename my project**
 1. Update the name of `package.json`
 2. Update the name of `index.ios.js` & `index.android.js`
 3. `rm -rf ios; rm -rf android; rm -rf app.json;`
-4. `react-native upgrade`
-5. `rnpm install`
+4. `npm install`
+5. `react-native upgrade`
+6. `rnpm link`
 
 It's all
