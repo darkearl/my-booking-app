@@ -11,5 +11,10 @@ export default StyleSheet.create({
     backgroundColor: Colors.backgroundColorOpacity,
     padding: Metrics.baseMargin,
     borderColor: Colors.white
-  }
+  },
+  text:{
+    color: Colors.white,
+    textAlign: 'center',
+    marginTop: Metrics.baseMargin
+  },
 })

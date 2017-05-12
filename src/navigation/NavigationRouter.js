@@ -18,8 +18,8 @@ class NavigationRouter extends Component {
       <RouterWithRedux>
         <Scene key='drawer' component={NavigationDrawer} open={false}>
           <Scene key='drawerChildrenWrapper'>
-            <Scene key="launchScreen" title='LaunchScreen' component={LaunchScreen} hideNavBar />
-            <Scene initial key="login" component={Login} title='LoginScreen' hideNavBar />
+            <Scene initial key="launchScreen" title='LaunchScreen' component={LaunchScreen} hideNavBar />
+            <Scene key="login" component={Login} hideNavBar />
             <Scene key="main" title='MainScreen' component={Main} />
           </Scene>
         </Scene>

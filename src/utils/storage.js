@@ -11,7 +11,7 @@ export const setUserToken = (token) => {
   });
 };
 
-export const getUserToken = () => {
+export const  getUserToken =  () => {
   return AsyncStorage.getItem(AppConfig.API_TOKEN);
 };
 

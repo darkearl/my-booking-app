@@ -24,6 +24,7 @@ function loginSuccess() {
 }
 
 function loginFailure(message) {
+  forgetItem(API_TOKEN);
   return {
     type: LOGIN_FAILURE,
     payload: message
@@ -37,8 +38,8 @@ export function login(email, password, remember = false) {
       .then(response => {
         let {data: {Token}} = response;
         setUserToken(Token);
-        dispatch(loginSuccess());
-        dispatch(getProfile());
+        return dispatch(getProfile())
+          .then(() => dispatch(loginSuccess()))
       })
       .catch(error => {
         dispatch(loginFailure(error));
@@ -49,15 +50,18 @@ export function login(email, password, remember = false) {
 
 export function loginUserByToken() {
   return (dispatch) => {
-    // dispatch(loginRequest());
     return getUserToken()
       .then((token) => {
         if(token) {
+          dispatch(loginRequest());
           return dispatch(getProfile())
             .then(() => dispatch(loginSuccess()))
-            .catch(() => forgetItem(API_TOKEN))
+            .catch((error) => {
+              dispatch(loginFailure(error));
+              throw error;
+            })
         }else{
-          return false
+          throw('no token');
         }
       })
   }
@@ -80,8 +84,6 @@ function getProfile ()  {
         })
       )
       .catch(error => {
-
-        dispatch(loginFailure(error));
         throw error;
       });
   }

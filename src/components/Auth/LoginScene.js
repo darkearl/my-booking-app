@@ -1,14 +1,10 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Field,reduxForm } from 'redux-form';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, TouchableHighlight} from 'react-native';
 import styles from './styles';
-import { Colors } from '../../assets/themes'
-import FormInput from '../FormInput';
+import { Input } from '../Form';
 import Loading from '../Loading';
-const elements = {
-  email: {lbl: 'lbl_email', name: 'email', id: 'emailId'},
-  password: {lbl: 'lbl_password', name: 'password', id: 'passwordId'},
-};
 
 const validate = values => {
   let {email, password} = values
@@ -25,49 +21,38 @@ class LoginScene extends Component {
   constructor(props){
     super(props)
   }
-  onSubmitEdit = () => {
-    // whatever you want to do on submit
-    this.props.focusField('loginForm',elements.password.name)
-  }
 
   render() {
-    const { handleSubmit,loginReducer,pristine, submitting } = this.props;
-    let disableButton = pristine || submitting
+    const { handleRegisterRoute, handleSubmit, loginReducer, pristine, submitting, onSubmit } = this.props;
+    const disable = (pristine || submitting);
     return (
       <View style={styles.section}>
         <Loading visible={loginReducer.isFetching}/>
         <View style={styles.containerInput}>
           <Field
-            name={elements.email.name}
-            component={FormInput}
+            name='email'
+            component={Input}
             keyboardType="email-address"
             placeholder="email"
-            returnKeyType="next"
-            autoCapitalize='none'
-            autoCorrect={false}
             onSubmitEditing={()=>this.passwordField.focus()}
-            underlineColorAndroid='transparent'
-            placeholderTextColor={Colors.placeholderTextColor}
-            style={styles.textInput}
           />
           <Field
-            name={elements.password.name}
-            component={FormInput}
+            name='password'
+            component={Input}
             secureTextEntry
             placeholder="password"
-            returnKeyType="go"
             refName={(c)=>this.passwordField = c}
-            autoCapitalize='none'
-            autoCorrect={false}
-            underlineColorAndroid='transparent'
-            placeholderTextColor={Colors.placeholderTextColor}
-            style={styles.textInput}
             last
           />
         </View>
-        <TouchableOpacity style={disableButton ? styles.buttonDisabled : styles.button} onPress={handleSubmit(this.props.onSubmit)} disabled={disableButton} >
+        <TouchableOpacity style={disable ? styles.buttonDisabled : styles.button} onPress={handleSubmit(onSubmit)} disabled={disable} >
           <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
+
+        <TouchableHighlight onPress={()=>handleRegisterRoute()} underlayColor='transparent'>
+          <Text style={styles.text}>Dont have an account? Register</Text>
+        </TouchableHighlight>
+
       </View>
     )
   }

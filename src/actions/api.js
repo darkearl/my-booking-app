@@ -1,12 +1,8 @@
 import api from '../services';
 import { getUserToken } from '../utils/storage';
 
-export const fetchData = (type, resource, params) => {
-  return getUserToken()
-    .then((token) => {
-      return api(type, resource, params, token)
-    })
-    .catch(()=> {
-      return api(type, resource, params)
-    })
+export const fetchData =async (type, resource, params) => {
+  let token =await getUserToken();
+  console.log(token);
+  return api(type, resource, params, token)
 };

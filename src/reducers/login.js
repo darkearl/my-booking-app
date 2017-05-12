@@ -1,10 +1,10 @@
 import {createReducer} from '../utils/reducer';
-
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT_USER
+  LOGOUT_USER,
+  GET_PROFILE_USER
 } from './../constants/ActionTypes';
 
 
@@ -36,4 +36,9 @@ export default createReducer(initialState, {
       ...initialState
     });
   },
+  [GET_PROFILE_USER]: (state) => {
+    return Object.assign({}, state, {
+      ...initialState
+    });
+  }
 })
