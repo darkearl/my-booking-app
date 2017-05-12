@@ -62,11 +62,10 @@ see more: https://facebook.github.io/react-native/docs/debugging.html
 
 Question: **How to rename my project**
 
-1. Update the name of `package.json`
-2. Update the name of `index.ios.js` & `index.android.js`
-3. `rm -rf ios; rm -rf android; rm -rf app.json;`
-4. `npm install`
-5. `react-native upgrade`
-6. `rnpm link`
+1. Update `displayName` in `app.json` to the new name
+2. `rm -rf ios; rm -rf android`
+3. `react-native eject`
+4. `react-native upgrade`
+5. `react-native link`
 
 It's all
