@@ -25,7 +25,9 @@ const ApplicationStyles = {
     },
     contentContainerStyle:{
       //for scrollview
-      height: Metrics.screenHeight - Metrics.navBarHeight,
+      flex:1,
+      justifyContent:'center',
+      paddingBottom: Metrics.doubleBaseMargin
     },
     section: {
       margin: Metrics.section,

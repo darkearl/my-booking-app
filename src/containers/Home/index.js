@@ -12,7 +12,7 @@ class Home extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage}/>
-        <ScrollView style={styles.container} contentContainerStyle={{flex:1,justifyContent:'center'}}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainerStyle}>
           <View style={styles.centered}>
             <Text>home page</Text>
           </View>

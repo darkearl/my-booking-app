@@ -20,7 +20,7 @@ class LaunchScreen extends Component {
       <View style={styles.mainContainer}>
         <Loading visible={loginReducer.isFetching}/>
         <Image source={Images.background} style={styles.backgroundImage}/>
-        <ScrollView style={styles.container} contentContainerStyle={{flex:1,justifyContent:'center'}}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainerStyle}>
           <View style={styles.centered}>
             <Image source={Images.logo} style={styles.logo} />
           </View>
