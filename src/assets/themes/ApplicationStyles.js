@@ -21,10 +21,14 @@ const ApplicationStyles = {
       height: null,
     },
     container: {
-      paddingTop: Metrics.baseMargin,
+      // paddingTop: Metrics.baseMargin,
+    },
+    contentContainerStyle:{
+      //for scrollview
+      height: Metrics.screenHeight - Metrics.navBarHeight,
     },
     section: {
-      margin: Metrics.section
+      margin: Metrics.section,
     },
     sectionText: {
       ...Fonts.style.normal,
@@ -46,13 +50,18 @@ const ApplicationStyles = {
     },
     centered: {
       alignItems: 'center'
+    },
+    logoContainer: {
+      alignItems: 'center',
+      backgroundColor: 'rgba(255,255,255,0.1)',
+      justifyContent:'center',
+      paddingVertical: Metrics.doubleBaseMargin * 2
     }
   },
   form:{
     button:{
-      marginTop: Metrics.baseMargin,
       alignItems: 'center',
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.buttonColor,
       paddingVertical: Metrics.marginVertical,
       elevation:10
     },
@@ -61,20 +70,26 @@ const ApplicationStyles = {
       fontWeight:'bold'
     },
     buttonDisabled: {
-      marginTop: Metrics.baseMargin,
       alignItems: 'center',
       backgroundColor: Colors.buttonBackgroundOpacity,
       paddingVertical: Metrics.marginVertical,
-      elevation:10,
     },
     containerTextInput:{
-      marginBottom: Metrics.baseMargin
+      marginBottom: Metrics.baseMargin,
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderBottomWidth:1,
+      borderBottomColor:Colors.inputUnderlineColor,
+    },
+    iconInput:{
+      color: Colors.inputIconColor,
+      padding: 10,
     },
     textInput:{
       color: Colors.textInputColor,
       height: Metrics.textInputHeight,
-      backgroundColor: Colors.textInputBackgroundColor,
-      paddingHorizontal: Metrics.marginHorizontal
+      paddingHorizontal: Metrics.marginHorizontal,
+      flex: 1,
     },
     errorText: {
       marginTop: Metrics.baseMargin,

@@ -4,13 +4,14 @@ import { Colors, Metrics, ApplicationStyles } from '../../assets/themes';
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   ...ApplicationStyles.form,
-  section:{
-    margin: Metrics.section,
+  section: {
+    marginTop: Metrics.section,
+    marginLeft: Metrics.section,
+    marginRight: Metrics.section,
+    flexGrow:1,
+    justifyContent: 'space-between'
   },
   containerInput: {
-    backgroundColor: Colors.backgroundColorOpacity,
-    padding: Metrics.baseMargin,
-    borderColor: Colors.white
   },
   text:{
     color: Colors.white,

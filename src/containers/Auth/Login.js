@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import { login } from '../../actions/Auth/login';
 import LoginScene from './../../components/Auth/LoginScene';
 import { View, Image, ScrollView, Linking } from 'react-native';
-import {Images} from '../../assets/themes';
+import {Images,Metrics} from '../../assets/themes';
 import styles from './styles';
 
 class Login extends Component {
@@ -27,8 +27,8 @@ class Login extends Component {
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage}/>
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainerStyle}>
+          <View style={styles.logoContainer}>
             <Image style={styles.logo} source={Images.logo}/>
           </View>
           <LoginScene

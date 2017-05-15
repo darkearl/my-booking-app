@@ -9,7 +9,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {
-    marginTop: Metrics.doubleSection,
     height: Metrics.images.logo,
     width: Metrics.images.logo,
     resizeMode: 'contain'

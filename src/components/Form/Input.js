@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {View, TextInput, Text} from 'react-native';
 import Styles from './styles';
-import { Colors } from '../../assets/themes';
-
+import { Colors,Metrics } from '../../assets/themes';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class FormInput extends Component {
@@ -22,8 +22,9 @@ export default class FormInput extends Component {
 
     itemOptions = Object.assign(itemOptions,inputProps,props);
     return (
-      <View style={last ? '' : Styles.containerTextInput} >
-        <TextInput ref={refName} {...itemOptions}/>
+      <View style={Styles.containerTextInput} >
+        {icon && <Icon name={icon} size={20} style={Styles.iconInput} />}
+        <TextInput ref={refName} {...itemOptions} />
         {touched && hasError && <Text style={Styles.errorText}>{error}</Text>}
       </View>
     )
